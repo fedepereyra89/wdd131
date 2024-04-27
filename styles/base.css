@@ -137,11 +137,11 @@ main {
 }
 
 .content {
-  grid: 2 /4;
+  grid: 2/4;
 }
 
 .sidebar {
-  grid: 1 / 2;
+  grid: 1/2;
 }
 
 footer {
