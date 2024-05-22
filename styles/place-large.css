@@ -1,0 +1,79 @@
+@media screen and (min-width: 600px){
+
+    header {
+        margin: 0rem;
+        padding: 1rem;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .weather-icon {
+        display: none;
+    }
+
+
+    .weather-header::after {
+        content: " ⛅"; 
+    }
+
+    h2 {
+        background-color: rgba(11, 112, 146, 0.65);
+        padding: 0.3rem;
+        color: whitesmoke;
+    }
+
+    .weather h2 {
+        display: block;
+    }
+    
+    .emoji {
+        margin: 0;
+    }
+
+    picture {
+        margin: 1rem 0rem;
+    }
+    
+    main picture {
+        display: flex;
+        justify-content: center;
+    }
+    
+    main img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    main {
+        position: relative;
+    }
+    
+    .data {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    
+    .weather {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+    }
+
+    .data, .weather {
+        background-color: rgba(245, 245, 245, 0.7);
+    }
+
+    .weather-icon {
+        position: absolute;
+    }
+
+    ul {
+        margin: 0.5rem;
+        list-style: none;
+    }
+}
