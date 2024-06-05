@@ -108,25 +108,25 @@ function createTempleCard(filteredTemples) {
     })
 }
 
-const oldLink = document.querySelector("#old");
-const newLink = document.querySelector("#new");
-const largeLink = document.querySelector("#large");
-const smallLink = document.querySelector("#small");
+const olderLink = document.querySelector("#older");
+const newerLink = document.querySelector("#newer");
+const largerLink = document.querySelector("#larger");
+const smallerLink = document.querySelector("#smaller");
 
-oldLink.addEventListener("click", () => {
-    let old = temples.filter(temple => parseInt(temple.dedicated.split(',')[0]) < 1900);
-    createTempleCard(old);
+olderLink.addEventListener("click", () => {
+    let older = temples.filter(temple => parseInt(temple.dedicated.split(',')[0]) < 1900);
+    createTempleCard(older);
 });
 
-newLink.addEventListener("click", () => {
-    let old = temples.filter(temple => parseInt(temple.dedicated.split(',')[0]) > 2000);
-    createTempleCard(old);
+newerLink.addEventListener("click", () => {
+    let newer = temples.filter(temple => parseInt(temple.dedicated.split(',')[0]) > 2000);
+    createTempleCard(newer);
 });
-largeLink.addEventListener("click", () => {
+largerLink.addEventListener("click", () => {
     let old = temples.filter(temple => temple.area > 90000);
     createTempleCard(old);
 });
-smallLink.addEventListener("click", () => {
+smallerLink.addEventListener("click", () => {
     let old = temples.filter(temple => temple.area < 10000);
     createTempleCard(old);
 });
