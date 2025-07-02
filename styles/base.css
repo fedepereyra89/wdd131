@@ -1,0 +1,157 @@
+html,
+body {
+  margin: 0;
+  background-color: #f7f7f7ec;
+}
+.container {
+  max-width: 880px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+img {
+  width: 90%;
+}
+
+figure {
+  margin: 20px 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+}
+
+a {
+  font-family: "Inter", sans-serif;
+  color: #000;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 1rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.card-content ul {
+  padding: 0;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0.7rem;
+  transition: 300ms;
+  border-radius: 0.4rem;
+}
+
+nav ul li a:hover {
+  background-color: #f2f2f2;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.wrapper img {
+  width: 140px;
+}
+
+.flag {
+  max-width: 140px;
+}
+
+.myname {
+  font-weight: 300;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px #cccccc;
+  background-color: #fff;
+}
+
+.card-title {
+  display: block;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 24px 40px 20px 40px;
+  background-color: #127dab;
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+}
+
+.card-content {
+  padding: 20px 40px;
+}
+
+.card-content ul {
+  padding: 0;
+}
+
+.content {
+  grid: 2/4;
+}
+
+.sidebar {
+  grid: 1/2;
+}
+
+footer {
+  display: block;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 24px 20px 20px 40px;
+  background-color: #127dab;
+  color: #fff;
+  
+
+}
