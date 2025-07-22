@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Federico Pereyra">
+    <title>WDD 131 - Dynamic Web Fundamentals - Federico Pereyra</title>
+    <link rel="stylesheet" href="styles/place.css">
+    <link rel="stylesheet" href="styles/place-large.css">
+    <script src="scripts/place.js" defer></script>
+    <meta name="description" content="WDD 131 - Dynamic Web Fundamentals - Federico Pereyra"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="title">
+            <h1>Buenos Aires</h1>
+        </div>
+    </header>
+
+    <main>
+        <picture>
+            <source srcset="images/obelisco-large.webp" media="(min-width: 600px)" width="1920" height="1280">
+            <img src="images/obeslico-small.webp" alt="Utah Outdoors Picture" width="427" height="740">
+        </picture>
+        <div class="data">
+            <h2>Data</h2>
+            <ul>
+                <li><strong>Area: </strong>203 km²</li>
+                <li><strong>Population: </strong>3.120.612 (may 2022)</li>
+                <li><strong>Capital: </strong>La Plata</li>
+                <li><strong>Languages: </strong>Spanish</li>
+                <li><strong>Currency: </strong>Argentine pesos</li>
+                <li><strong>Time Zone: </strong>(GMT-3)</li>
+                <li><strong>Calling Code: </strong>(+54 11), (+54 9 11)</li>
+                <li><strong>Internet TLD: </strong>.ar</li>
+            </ul>
+        </div>
+        <div class="weather">
+            <h2 class="weather-header">Weather</h2>
+            
+            <picture class="weather-icon">
+                <source srcset="images/weather-icon.svg">
+                <img src="images/weather-icon.svg" alt="Partly Cloudy" width="50" height="50">
+            </picture>
+            <ul>
+                <li><strong>Temperature: </strong>49°F</li>
+                <li><strong>Conditions: </strong>Clear</li>
+                <li><strong>Wind: </strong>7 mph</li>
+                <li><strong>Wind Chill: </strong><span id="windChill"></span></li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>
+          <span id="currentyear"></span> - Federico Pereyra - Argentina
+        </p>
+        <p>
+          <span id="lastmodified"></span>
+        </p>
+    </footer>
+</body>
+</html>

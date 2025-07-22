@@ -1,0 +1,73 @@
+
+* {
+    font-family: "Noto Sans", sans-serif;
+}
+
+:root {
+    --body-color: rgba(137, 218, 245, 0.65);
+    --head-foot-color: rgb(15, 85, 143);
+    --white-text: white;
+    --side-section-color:  rgb(222, 222, 222);
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+header {
+    background-color: var(--head-foot-color);
+    color: var(--white-text);
+    text-align: center;
+    
+    
+}
+
+h1 {
+    font-size: 38px;
+}
+
+
+h2 {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.emoji {
+    margin: 0;
+}
+
+picture {
+    margin: 1rem 0rem;
+}
+
+main picture {
+    display: flex;
+    justify-content: center;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+}
+
+.data, .weather {
+    background-color: var(--side-section-color);
+    padding: 1px;
+    margin: 1rem;
+    font-size: 14px;
+}
+
+.weather h2, .weather-icon {
+    display: inline;
+    vertical-align: middle;
+}
+
+footer {
+    background: var(--head-foot-color);
+    color: var(--white-text);
+    width: auto;
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+}
