@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Review</title>
+  <meta name="description" content="WDD 131 project Dynamic Web Fundamentals">
+  <meta name="author" content="Federico Pereyra">
+  <link rel="stylesheet" href="styles/form.css">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <script defer src="scripts/getdates.js"></script>
+  <script defer src="scripts/form.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Product Review</h1>
+    </header>
+
+    <main>
+      <form action="review.html" method="get">
+        <div class="form-group">
+          <label for="product">Product Name</label>
+          <select id="product" name="product" required>
+            <option value="" disabled selected>Select a Product ...</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Overall Rating</label>
+          <div class="rating">
+            <label for="star5" title="5 stars">
+              <input type="radio" id="star5" name="rating" value="5" required>⭐⭐⭐⭐⭐
+            </label>
+            <label for="star4" title="4 stars"><input type="radio" id="star4" name="rating" value="4">⭐⭐⭐⭐</label>
+            <label for="star3" title="3 stars"><input type="radio" id="star3" name="rating" value="3">⭐⭐⭐</label>
+            <label for="star2" title="2 stars"><input type="radio" id="star2" name="rating" value="2">⭐⭐</label>
+            <label for="star1" title="1 star"><input type="radio" id="star1" name="rating" value="1">⭐</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="installation-date">Date of Installation</label>
+          <input type="date" id="installation-date" name="installation-date" required>
+        </div>
+
+        <div class="form-group">
+          <label>Which features did you find useful in the product? <br>
+            <span>(Check all that apply)</span></label>
+          <div class="checkbox-group">
+
+            <label for="feature1"><input type="checkbox" id="feature1" name="features"
+                value="Durability">Durability</label>
+            <label for="feature2"><input type="checkbox" id="feature2" name="features" value="Ease of use">Ease of
+              use</label>
+            <label for="feature3"><input type="checkbox" id="feature3" name="features"
+                value="Performance">Performance</label>
+            <label for="feature4"><input type="checkbox" id="feature4" name="features" value="Design">Design</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="review">Written Review (optional)</label>
+          <textarea id="review" name="review" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Your Name (optional)</label>
+          <input type="text" id="username" name="username">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="Post Review">
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <p>
+        <span id="currentyear"></span> - Federico Pereyra - Argentina
+        <br>
+        <span id="lastmodified"></span>
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>
