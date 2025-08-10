@@ -21,13 +21,13 @@ const items = [
     { page: 'products', name: 'Mate Box', category: 'box', price: 2500, image: 'images/Mate-box.jpg' },
     { page: 'products', name: 'Dark Mates', category: 'wood', price: 1600, image: 'images/cuatro-mates-oscuros.jpg' },
 
-    // Recommendations for the 'Recommenations' page
-    { page: 'recommenations', name: '1. Fill a thermos with hot water', description: 'So that the temperature of your mate is at its right point, make sure that it is neither lukewarm nor boiling. The advisable thing is that it is between 80 and 90º C.', image: 'images/mate_1.png' },
-    { page: 'recommenations', name: '2. Throw yerba into the mate and shake', description: 'Fill up to three quarters of the container. Then, cover the mouth of the mate and shake it a couple of times to remove the dust.', image: 'images/mate_2.png' },
-    { page: 'recommenations', name: '3. Lie down, form a hole and pour warm water', description: 'Lay the yerba on one of the walls of the mate to form a hole in the opposite wall, and then gently pour warm water.', image: 'images/mate_3.png' },
-    { page: 'recommenations', name: '4. Insert the bulb', description: 'Cover the upper hole of the bulb with a finger and place it in the hole you created earlier. This prevents the mate from being covered.', image: 'images/mate_4.png' },
-    { page: 'recommenations', name: '5. "Cebar" Prime or pour the water', description: 'Now with the ideal temperature, begin to pour the water. Little water should be placed in turn and always in the same place.', image: 'images/mate_5.png' },
-    { page: 'recommenations', name: '6. Share a moment', description: 'The round begins and it is essential to respect the turns. Share some good dunks and celebrate that precise moment.', image: 'images/mate_6.png' }
+    // Recommendations for the 'Recommendations' page
+    { page: 'recommendations', name: '1. Fill a thermos with hot water', description: 'So that the temperature of your mate is at its right point, make sure that it is neither lukewarm nor boiling. The advisable thing is that it is between 80 and 90º C.', image: 'images/mate_1.png' },
+    { page: 'recommendations', name: '2. Throw yerba into the mate and shake', description: 'Fill up to three quarters of the container. Then, cover the mouth of the mate and shake it a couple of times to remove the dust.', image: 'images/mate_2.png' },
+    { page: 'recommendations', name: '3. Lie down, form a hole and pour warm water', description: 'Lay the yerba on one of the walls of the mate to form a hole in the opposite wall, and then gently pour warm water.', image: 'images/mate_3.png' },
+    { page: 'recommendations', name: '4. Insert the bulb', description: 'Cover the upper hole of the bulb with a finger and place it in the hole you created earlier. This prevents the mate from being covered.', image: 'images/mate_4.png' },
+    { page: 'recommendations', name: '5. "Cebar" Prime or pour the water', description: 'Now with the ideal temperature, begin to pour the water. Little water should be placed in turn and always in the same place.', image: 'images/mate_5.png' },
+    { page: 'recommendations', name: '6. Share a moment', description: 'The round begins and it is essential to respect the turns. Share some good dunks and celebrate that precise moment.', image: 'images/mate_6.png' }
 ];
 
 // -------------------------------------------
@@ -42,9 +42,12 @@ function initializePage() {
         setupHomePage();
     } else if (currentPage.includes('products')) {
         setupProductsPage();
-    } else if (currentPage.includes('recommenations')) {
+    } else if (currentPage.includes('recommendations')) {
         setupRecommendationsPage();
     }
+
+    setupScrollToTop();
+    setupModalDismissOnOutsideClick();
 }
 
 // =====================================================================
@@ -59,7 +62,7 @@ function setupHomePage() {
     const productsToShow = [
         items.find(item => item.name === 'Hexagonal Mate'),
         items.find(item => item.name === 'Carob Tree Mate'),
-        items.find(item => item.name === 'Mate Hexagonal Algarrobo')
+        items.find(item => item.name === 'Nordic Mate')
     ];
     
     const validProducts = productsToShow.filter(item => item);
@@ -104,10 +107,10 @@ function setupProductsPage() {
 
 // Lógica de la página de recomendaciones
 function setupRecommendationsPage() {
-    const recommendationsGrid = document.querySelector('.recommenations-grid');
+    const recommendationsGrid = document.querySelector('.recommendations-grid');
     if (!recommendationsGrid) return;
 
-    const recsToShow = items.filter(item => item.page === 'recommenations');
+    const recsToShow = items.filter(item => item.page === 'recommendations');
 
     const recsHTML = recsToShow.map(rec => `
         <section class="recommendation-card">
@@ -118,6 +121,38 @@ function setupRecommendationsPage() {
     `).join('');
 
     recommendationsGrid.innerHTML = recsHTML;
+}
+
+// -------------------------------------------
+// 3. Utilidades (scroll-to-top y modal)
+// -------------------------------------------
+
+function setupScrollToTop() {
+    const scrollButton = document.getElementById('myBtn');
+    if (!scrollButton) return;
+
+    window.addEventListener('scroll', () => {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+
+    window.topFunction = function topFunction() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+}
+
+function setupModalDismissOnOutsideClick() {
+    const modal = document.getElementById('id01');
+    if (!modal) return;
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 }
 
 // ===========================================
