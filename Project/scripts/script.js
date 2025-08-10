@@ -10,6 +10,7 @@ const items = [
     // Products for the 'Products' page
     { page: 'products', name: 'Hexagonal Mate', category: 'wood', price: 1500, image: 'images/Hexagonal.jpg' },
     { page: 'products', name: 'Carob Tree Mate', category: 'wood', price: 1200, image: 'images/mate-algarrobo.jpg' },
+    { page: 'products', name: 'Mate Hexagonal Algarrobo', category: 'wood', price: 1600, image: 'images/mate-algarrobo-Hexagonal.jpg' },
     { page: 'products', name: 'Personalized Mate', category: 'wood', price: 1800, image: 'images/rsz_mate-personalizado.jpg' },
     { page: 'products', name: 'Mate and Yerbatero Set', category: 'yerbatero', price: 2500, image: 'images/Juego-mate-y-yerbatero.jpeg' },
     { page: 'products', name: 'Gift Box', category: 'box', price: 3000, image: 'images/Box-regalo-bolsa.jpg' },
@@ -126,4 +127,17 @@ function setupRecommendationsPage() {
 
 // Escuchamos el evento de carga de la página
 document.addEventListener('DOMContentLoaded', initializePage);
+
+// Add scroll-to-top behaviors safely (present on some pages only)
+window.addEventListener('scroll', function handleScrollButtonVisibility() {
+  const topButton = document.getElementById('myBtn');
+  if (!topButton) return;
+  const shouldShow = document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
+  topButton.style.display = shouldShow ? 'block' : 'none';
+});
+
+// Expose topFunction used by inline onclick attributes
+function topFunction() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
