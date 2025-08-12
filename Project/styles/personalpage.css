@@ -1,462 +1,455 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mr+Dafoe&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mr+Dafoe&family=Roboto+Slab:wght@300;400;700&display=swap');
 
 :root {
---heading-font: "Mr Dafoe";
---paragraph-font: Mr Dafoe, Roboto Slab, lobster;
+    --heading-font: "Mr Dafoe", cursive;
+    --paragraph-font: "Roboto Slab", serif;
+    --primary-color: #7f5539;
+    --secondary-color: #e6ccb2;
+    --accent-color: #ede0d4;
+    --text-color: #333;
 }
 
-h2 {
-    text-align: center;
-    font-family: roboto slab;
-    font-size: 20px;
-}
-
-h3 {
-    font-size: 40px;
-}
-
-h4 {
-    text-align: center;
-    font-family: roboto slab;
-    font-size: 30px;
-    width: 100%;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: #e6ccb2;
-    font-family: Roboto Slab; 
-    font-size: 50px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.mhp {
-    width: 75%;
-    margin: 0 auto;
-    font-family: roboto slab;
-    font-size: 30px;
-}
-
-.mpp {
-    width: 82%;
-    margin: 0 auto;
-    font-family: roboto slab;
-    font-size: 30px;
-    text-align: center;
-}
-.mrp {
-    width: 100%;
-    margin: 0 auto;
-    font-family: roboto slab;
-    font-size: 30px;
-    text-align: center;
+    background-color: var(--secondary-color);
+    font-family: var(--paragraph-font);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 #content {
     max-width: 1600px;
-    margin:0 auto;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    padding: 1rem;
 }
 
 .logo {
-    width: 100px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 #logo_link {
-    padding-top: 5px;
     justify-self: center;
-    align-self: center;
-}
-
-header {
-    background-color: #7f5539;
-    display: grid;
-    grid-template-columns: 150px auto;
-    font-size: 50px;
-}
-
-nav a:hover {
-    color: rgb(219, 146, 83);
 }
 
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2rem;
 }
 
 nav a {
     text-decoration: none;
-    color: #e6ccb2;
-    text-align: center;
-    padding: 35px;
+    color: var(--secondary-color);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
-.home-grid { 
-    display:grid; 
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto;
+nav a:hover {
+    color: #db9253;
+    background-color: rgba(219, 146, 83, 0.1);
 }
+
+/* Typography */
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+h2 {
+    font-family: var(--paragraph-font);
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-family: var(--paragraph-font);
+    font-size: 1.75rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Main content areas */
+.main-title {
+    margin: 4rem 0;
+}
+
+.mhp, .mpp, .mrp {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+#welcome-message {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-top: 1rem;
+}
+
+/* Grid Layouts */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.main-title {
-    font-family: "Mr Dafoe";
-    font-size: 2em;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-    color: #7f5539;
+.recommendations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Card Styles */
+.hexagonal-card, .algarrobo-card, .algarrobo-hexagonal-card, .product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(127, 85, 57, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hexagonal-card:hover, .algarrobo-card:hover, .algarrobo-hexagonal-card:hover, .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(127, 85, 57, 0.3);
+}
+
+.recommendation-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(127, 85, 57, 0.2);
     text-align: center;
 }
 
-
-.card-img  {
-    box-shadow: 5px 5px 10px 10px #7f5539;
+.card-img {
     width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
+
+.card-img:hover {
+    transform: scale(1.05);
+}
+
 .card-imgr {
-    border: 10px solid #ede0d4;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border: 8px solid var(--accent-color);
+    border-radius: 12px;
+    margin: 0 auto 1rem;
 }
 
-/*home page*/
-
-.hexagonal-card {
-    grid-column: 2/4;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
+.product-card h2, .hexagonal-card h2, .algarrobo-card h2, .algarrobo-hexagonal-card h2 {
+    padding: 1rem;
+    margin: 0;
 }
 
-.algarrobo-card {
-    grid-column: 6/8;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
+.price {
+    padding: 0 1rem 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.125rem;
 }
 
-.algarrobo-hexagonal-card {  
-    grid-column: 2/8;
-    grid-row: auto;
-}
-
-/*products*/
-
-.cuatro-mates-claros-card  {
-    grid-column: 2/4;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.tres-mates-card {
-    grid-column: 5/7;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.cuatro-mates-oscuros-cards {
-    grid-column: 8/10;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.mate-frases-card {
-    grid-column: 2/4;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.nordico-card {
-    grid-column: 5/7;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.mate-yerbatero-card {
-    grid-column: 8/10;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.box-regalo-card {
-    grid-column: 2/4;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.mate-cuenco-card {
-    grid-column: 5/7;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.products-card {
-    grid-column: 8/10;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.triangulo-azul-card {
-    grid-column: 2/4;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.love-card {
-    grid-column: 5/7;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-}
-.mate-box-card {
-    grid-column: 8/10;
-    grid-row: auto;
-    margin-top: 100px;
-    margin-bottom: 100PX;
-
-}
-
-/* recommenations*/
-
-.mate-1-card {
-    width: 80%;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: 10%;
-}
-.mate-2-card {
-    width: 80%;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: 10%;
-}.mate-3-card {
-    width: 80%;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: 10%;
-}.mate-4-card {
-    width: 80%;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: 10%;
-}.mate-5-card {
-    width: 80%;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: 10%;
-}.mate-6-card {
-    width: 80%;
-    display: block;
-    margin: 0px auto;
-    margin-bottom: 10%;
-}
-main section img {
-    box-sizing: border-box;
-}
-
-
+/* Footer */
 footer {
-    background-color: #7f5539;
-    color: #e6ccb2;
-    padding: 25px 50px;
-    display: flex;
-    justify-content: space-around;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 2rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: center;
     align-items: center;
 }
 
 footer a {
-    color: #e6ccb2;
+    color: var(--secondary-color);
     text-decoration: none;
-}
-
-footer .social img {
-    padding-top: 15px ;
-}
-
-
-footer h3 {
-    color:#e6ccb2;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: rgb(219, 146, 83);
+    color: #db9253;
 }
+
+footer .social img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+footer h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Back to Top Button */
 #myBtn {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed/sticky position */
-    bottom: 20px; /* Place the button at the bottom of the page */
-    right: 30px; /* Place the button 30px from the right */
-    z-index: 99; /* Make sure it does not overlap */
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
-    background-color: #7f5539; /* Set a background color */
-    color: white; /* Text color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
-    border: 4px solid #d9c2a3;
-    width: 5%;
-  }
-  
-
-/* LOGIN FORM CODE*/
-
-/* Bordered form */
-form {
-    border: 3px solid #f1f1f1;
-  }
-  
-  /* Full-width inputs */
-  input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  
-  /* Set a style for all buttons */
-  button {
-    background-color: #7f5539;
-    color: #e6ccb2;
-    padding: 14px 20px;
-    margin: 8px 0;
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
     border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: white;
     cursor: pointer;
-    width: 20%;
-  }
-  
-  /* Add a hover effect for buttons */
-  button:hover {
-    opacity: 0.8;
-  }
-  
-  /* Extra style for the cancel button (red) */
-  .cancelbtn {
-    width: 20%;
-    padding: 14px 20px;
-    background-color: #7f5539;
-  }
-  
-  /* Center the avatar image inside this container */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-  }
-  
-  /* Avatar image */
-  img.avatar {
-    width: 20%;
-    border-radius: 0;
-  }
-  
-  /* Add padding to containers */
-  .container {
-    padding: 16px;
-  }
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 4px solid var(--secondary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
 
-  
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-    .cancelbtn {
-      width: 100%;
-    }
-  }
-/* The Modal (background) */
+#myBtn:hover {
+    background-color: #db9253;
+    transform: translateY(-2px);
+}
+
+/* Login Button */
+button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 1rem;
+}
+
+button:hover {
+    background-color: #6d4830;
+}
+
+/* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 80%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
     background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
+    margin: 5% auto;
     border: 5px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    
- }
-  
-  /* The Close Button */
-  .close {
-    /* Position it in the top right corner outside of the modal */
+    width: 80%;
+    max-width: 500px;
+    border-radius: 12px;
+    animation: animatezoom 0.6s;
+    position: relative;
+}
+
+.close {
     position: absolute;
     right: 25px;
     top: 0;
-    color: #000;
+    color: var(--primary-color);
     font-size: 35px;
     font-weight: bold;
-  }
-  
-  /* Close button on hover */
-  .close:hover,
-  .close:focus {
-    color: #7f5539;
     cursor: pointer;
-  }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
-  }
-  
-  @keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
-  }
+}
 
-@media screen and (max-width: 900px) {
-    .home-grid {
-        display: block;
-        height: auto;
+.close:hover {
+    color: #db9253;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.container {
+    padding: 16px;
+}
+
+.container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.container input[type=text], .container input[type=password] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.container input[type=text]:focus, .container input[type=password]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.container button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 14px 24px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #6d4830;
+}
+
+.cancelbtn {
+    background-color: #666 !important;
+}
+
+.cancelbtn:hover {
+    background-color: #555 !important;
+}
+
+.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+@keyframes animatezoom {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
     }
-    nav, footer {
+
+    nav {
         flex-direction: column;
-    }
-    nav a {
-        display: block;
-        padding: 15px;
+        gap: 0.5rem;
     }
 
-    .home-title {
-        font-size: 25px;
-        color: #6f7364;
+    nav a {
+        padding: 0.75rem;
     }
-    .hexagonal-card, .algarrobo-card, .algarrobo-hexagonal-card { 
-        margin: 50px auto;
-        width: 60%;
+
+    .home-grid, .products-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
     }
-    #background {
-        display: none;
+
+    .recommendations-grid {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .mhp, .mpp, .mrp {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 
     footer {
-        margin-top: 25px;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
     }
-    .main-grid {
-        display: block;
-        height: auto;
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+
+    #myBtn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 16px 20px;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .card-imgr {
+        height: 200px;
     }
 }
