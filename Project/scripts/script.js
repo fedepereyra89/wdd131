@@ -9,7 +9,10 @@ const items = [
     { page: 'products', name: 'Nordic Mate', category: 'wood', price: 1700, image: 'images/rsz_mate-nordico.jpg' },
     { page: 'products', name: 'Painted Mates', category: 'wood', price: 1600, image: 'images/cuatro-mates-claros.jpg' },
     { page: 'products', name: 'Bowl Mate Box', category: 'box', price: 2800, image: 'images/mate-cuenco-box.jpg' },
+    { page: 'products', name: 'Products in sight', category: 'general', price: 0, image: 'images/productos-a-la-vista.jpg' },
     { page: 'products', name: 'Blue Triangle Mate', category: 'wood', price: 1600, image: 'images/Mate-triangulo-azul.jpg' },
+    { page: 'products', name: 'Mate Box', category: 'box', price: 2500, image: 'images/Mate-box.jpg' },
+    { page: 'products', name: 'Dark Mates', category: 'wood', price: 1600, image: 'images/cuatro-mates-oscuros.jpg' },
 
     
     { page: 'recommendations', name: '1. Fill a thermos with hot water', description: 'So that the temperature of your mate is at its right point, make sure that it is neither lukewarm nor boiling. The advisable thing is that it is between 80 and 90º C.', image: 'images/mate_1.png' },
@@ -31,21 +34,38 @@ function initializePage() {
     } else if (currentPage.includes('recommendations')) {
         setupRecommendationsPage();
     }
-        
-    initBackToTop();
+    
+    
+    initializeBackToTop();
+    
+    
+    initializeLoginForm();
 }
 
 
 function setupHomePage() {
-    const welcomeMessage = document.getElementById('welcome-message');
-    const storedUser = localStorage.getItem('username');
-    if (welcomeMessage) {
-        if (storedUser) {
-            welcomeMessage.textContent = `Welcome back, ${storedUser}!`;
-        } else {
-            welcomeMessage.textContent = 'Welcome to Arkadia Deco!';
-        }
-    }
+    const homeGrid = document.querySelector('.home-grid');
+    if (!homeGrid) return;
+
+    const productsToShow = [
+        items.find(item => item.name === 'Hexagonal Mate'),
+        items.find(item => item.name === 'Carob Tree Mate'),
+        items.find(item => item.name === 'Personalized Mate')
+    ];
+    
+    const validProducts = productsToShow.filter(item => item);
+
+    const productHTML = validProducts.map(product => `
+        <section class="home-card">
+            <img class="card-img" src="${product.image}" alt="${product.name}" loading="lazy">
+            <h2>${product.name}</h2>
+        </section>
+    `).join('');
+
+    homeGrid.innerHTML = productHTML;
+
+    
+    updateWelcomeMessage();
 }
 
 
@@ -57,7 +77,7 @@ function setupProductsPage() {
 
     const productHTML = productsToShow.map(product => `
         <section class="product-card">
-            <img class="card-img" src="${product.image}" alt="${product.name}">
+            <img class="card-img" src="${product.image}" alt="${product.name}" loading="lazy">
             <h2>${product.name}</h2>
             <p class="price">Price: $${product.price}</p>
         </section>
@@ -75,7 +95,7 @@ function setupRecommendationsPage() {
 
     const recsHTML = recsToShow.map(rec => `
         <section class="recommendation-card">
-            <img class="card-imgr" src="${rec.image}" alt="${rec.name}">
+            <img class="card-imgr" src="${rec.image}" alt="${rec.name}" loading="lazy">
             <h2>${rec.name}</h2>
             <p>${rec.description}</p>
         </section>
@@ -85,37 +105,126 @@ function setupRecommendationsPage() {
 }
 
 
-function initBackToTop() {
-    const mybutton = document.getElementById("myBtn");
+function updateWelcomeMessage() {
+    const welcomeMessage = document.getElementById('welcome-message');
+    if (!welcomeMessage) return;
+    
+    const storedUser = localStorage.getItem('username');
+    if (storedUser) {
+        welcomeMessage.textContent = `Welcome back, ${storedUser}!`;
+    } else {
+        welcomeMessage.textContent = 'Welcome to Arkadia Deco!';
+    }
+}
+
+
+function initializeBackToTop() {
+    const myBtn = document.getElementById("myBtn");
+    if (!myBtn) return;
+
     
     window.onscroll = function() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
+            myBtn.style.display = "block";
         } else {
-            mybutton.style.display = "none";
+            myBtn.style.display = "none";
         }
     };
 }
 
+
 function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0; 
 }
 
 
-function handleLogin(event) {
-    event.preventDefault();
-    const username = event.target.uname.value;
-    if (username) {
-        localStorage.setItem('username', username);
-        alert(`Welcome, ${username}!`);
-        document.getElementById('id01').style.display = 'none';
-        
-        const welcomeMessage = document.getElementById('welcome-message');
-        if (welcomeMessage) {
-            welcomeMessage.textContent = `Welcome back, ${username}!`;
+function initializeLoginForm() {
+    const modal = document.getElementById('id01');
+    const loginForm = document.querySelector('.modal-content.animate');
+    
+    if (!modal || !loginForm) return;
+
+    
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
         }
+    };
+
+    
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.querySelector('input[name="uname"]').value;
+        const password = document.querySelector('input[name="psw"]').value;
+        
+        if (username && password) {
+            
+            localStorage.setItem('username', username);
+            
+            
+            alert(`Welcome, ${username}!`);
+            
+            
+            modal.style.display = "none";
+            
+            
+            updateWelcomeMessage();
+            
+            
+            loginForm.reset();
+        }
+    });
+}
+
+
+function toggleLoginModal(show) {
+    const modal = document.getElementById('id01');
+    if (modal) {
+        modal.style.display = show ? "block" : "none";
     }
+}
+
+
+function filterProductsByCategory(category) {
+    return items.filter(item => item.page === 'products' && item.category === category);
+}
+
+
+function searchProducts(searchTerm) {
+    return items.filter(item => 
+        item.page === 'products' && 
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+}
+
+
+function getProductByName(name) {
+    return items.find(item => item.page === 'products' && item.name === name);
+}
+
+
+function getProductsByPriceRange(minPrice, maxPrice) {
+    return items.filter(item => 
+        item.page === 'products' && 
+        item.price >= minPrice && 
+        item.price <= maxPrice
+    );
+}
+
+
+function getProductStats() {
+    const products = items.filter(item => item.page === 'products');
+    const prices = products.map(product => product.price).filter(price => price > 0);
+    
+    return {
+        totalProducts: products.length,
+        averagePrice: prices.reduce((sum, price) => sum + price, 0) / prices.length,
+        minPrice: Math.min(...prices),
+        maxPrice: Math.max(...prices),
+        categories: [...new Set(products.map(product => product.category))]
+    };
 }
 
 
@@ -123,8 +232,35 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePage();
     
     
-    const loginForm = document.querySelector('.modal-content');
-    if (loginForm) {
-        loginForm.addEventListener('submit', handleLogin);
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
+
+window.addEventListener('resize', function() {
+    
+    console.log('Window resized to:', window.innerWidth, 'x', window.innerHeight);
+});
+
+
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        console.log('Page is now hidden');
+    } else {
+        console.log('Page is now visible');
     }
 });
+
+
+window.topFunction = topFunction;
+window.toggleLoginModal = toggleLoginModal;
